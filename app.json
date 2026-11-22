@@ -1,0 +1,24 @@
+{
+  "expo": {
+    "name": "שותף",
+    "slug": "shutaf",
+    "scheme": "shutaf",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "automatic",
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.shutaf.app"
+    },
+    "android": {
+      "package": "com.shutaf.app"
+    },
+    "extra": {
+      "supportsRTL": true
+    },
+    "plugins": ["expo-router", "expo-localization"],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}
