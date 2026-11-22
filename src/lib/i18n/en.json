@@ -1,0 +1,54 @@
+{
+  "appName": "Shutaf",
+  "common": {
+    "continue": "Continue",
+    "cancel": "Cancel",
+    "error": "Something went wrong",
+    "comingSoon": "Coming soon"
+  },
+  "auth": {
+    "title": "Welcome to Shutaf",
+    "subtitle": "Run your shared apartment in one place",
+    "phoneLabel": "Phone number",
+    "phonePlaceholder": "+972 50 123 4567",
+    "sendCode": "Send verification code",
+    "google": "Sign in with Google",
+    "codeLabel": "The code you received",
+    "verify": "Verify"
+  },
+  "apartment": {
+    "title": "Your apartment",
+    "createTitle": "Open a new apartment",
+    "namePlaceholder": "e.g. The Rehavia flat",
+    "create": "Open apartment",
+    "joinTitle": "Join an existing apartment",
+    "codePlaceholder": "Invite code (6 characters)",
+    "join": "Join"
+  },
+  "tabs": {
+    "home": "Balance",
+    "shopping": "Shopping",
+    "calendar": "Calendar",
+    "requests": "Requests",
+    "assistant": "Assistant"
+  },
+  "home": {
+    "iOwe": "You owe {{amount}}",
+    "owedToMe": "You are owed {{amount}}",
+    "allSettled": "All settled 🎉",
+    "pairs": "Balance between partners",
+    "bottomLine": "Bottom line",
+    "owes": "{{from}} owes {{to}} {{amount}}",
+    "you": "you"
+  },
+  "landlord": {
+    "title": "My apartments",
+    "empty": "You haven't joined an apartment yet"
+  },
+  "placeholder": {
+    "shopping": "Shared shopping list, AI classification and suggestions",
+    "calendar": "Book events with every partner's approval",
+    "requests": "Requests to the landlord and their status",
+    "assistant": "Chat assistant: questions and actions about the apartment"
+  }
+}
