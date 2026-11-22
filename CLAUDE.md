@@ -117,6 +117,8 @@ Out of scope for this version: real payments through the app (Bit, PayBox), rece
 - A clear visual difference between the partners' area (social, light, dynamic) and the landlord's area (business-like, clean, functional).
 - Hebrew first, with full RTL support. Never hard-code a text direction.
 - Every visible text comes from translation files (`he`, `en`). No hard-coded strings in components.
+- The visual design comes from Stitch (`docs/design-stitch.md`). Colors, radii and shadows live in `src/lib/theme.ts`, so use those tokens instead of hex values. Brand teal is `#0D9488`, positive is `#10B981` and negative is `#EF4444`. The fonts (Rubik or Assistant) are not wired in yet.
+- Where the Stitch design conflicts with the spec, the spec wins until the team decides. The open conflicts are listed in `docs/design-stitch.md`.
 
 ## Open decisions
 Don't make these decisions silently. Ask, or leave a marked TODO:
@@ -134,6 +136,66 @@ Don't make these decisions silently. Ask, or leave a marked TODO:
 - `public.notifications` is an outbox. RPCs and triggers write to it, and the `notify` Edge Function sends the push.
 - `supabase/tests/rls_and_rules_test.sql`: permission and rule tests. Extend them whenever a policy or RPC changes.
 - `docs/plan.md`: the weekly schedule and the open decisions.
+
+## Database reference
+- **Permission helpers:**
+  - `is_partner(apt)`: an active partner of the apartment
+  - `was_partner(apt)`: a partner now or in the past
+  - `is_landlord(apt)`
+  - `active_partner_ids(apt)`
+  - `can_see_expense(exp)` and `can_see_all_shares(exp)`
+- **RPCs the app calls:**
+  - Apartments: `create_apartment`, `join_apartment(code)`, `leave_apartment`
+  - Bills: `add_expense`, `add_bill_amount`, `set_expense_participation`, `record_payment`
+  - Shopping: `complete_shopping`
+  - Calendar: `request_event`, `respond_event`, `cancel_event`, `edit_event`
+  - Landlord requests: `update_request` (landlord only)
+- **Views:** `pair_balances` gives the net debt for each pair, and `open_debts` gives the unpaid shares. Both use `security_invoker`, so the caller's RLS applies.
+- **Direct table writes from the client:** allowed only on `shopping_items`, `shared_categories`, `fixed_bills`, `maintenance_requests` (insert), `request_messages`, `request_media`, `landlord_contacts`, `push_tokens` and `notifications.read_at`.
+- **Internal functions, not for clients:** `rewrite_shares`, `notify_users`, `maybe_approve_event` and `process_event_deadlines`. Execute permission is revoked for clients.
+- **Notifications:** sent for a split change, a marked payment, a rejected event, an event reminder, a new request, a new request message, a request status change and a bill reminder. By the spec, no notification goes out when an event request is created.
+
+## Status (updated 2026-11-22)
+Done:
+- The skeleton: navigation, i18n/RTL, the Supabase client and session handling.
+- Phone sign-in, creating or joining an apartment, and the routing between those screens.
+- The home screen, showing pair balances, the bottom line and the personal status.
+- The landlord's list of apartments, with the number of open requests in each.
+- **Calendar (US-19 – US-23)**, on the `dev` branch:
+  - a list of upcoming events grouped by day, with approval progress and the auto-approve time
+  - approve, or reject with a reason
+  - the requester can cancel
+  - a + button opens a form to request an event (type, date, all day or hours, details)
+  - the helpers are in `src/domain/calendar.ts` and tested
+  - editing an existing event (`edit_event`) has no UI yet
+- The full schema, with RLS and RPCs for all six modules.
+- Domain logic with 32 Jest tests, and the SQL rule tests.
+
+Not done yet:
+- Google sign-in.
+- Choosing between several apartments (the app takes the latest one).
+- The detailed expense list and the FAB.
+- The UI for shopping, requests and the assistant (placeholders for now).
+- The Edge Functions (`ai-shopping`, `ai-chat`, `notify`).
+- The cleaning rota (optional), which has no tables yet.
+
+Not verified yet:
+- The app has never been run with `npm install` or on a device. Package versions are pinned to Expo SDK 54. Run `npx expo install --fix` first.
+- `20261116000100_cron_and_storage.sql` has only been written for Supabase and never run.
+
+## Gotchas
+- RLS policies on `expenses` and `expense_shares` must not query each other directly, because that recurses forever. Use the security-definer helpers.
+- `memberships.user_id` references `auth.users`, not `profiles`, so PostgREST can't embed `profiles` from `memberships`. Query `profiles` separately (RLS limits it to people who share an apartment with the user).
+- React Native applies a change between RTL and LTR only after a reload. `applyLanguage()` calls `Updates.reloadAsync()` when the direction flips.
+- `join_apartment` accepts either the partner code or the landlord code. A user can't hold both roles in the same apartment.
+- In SQL tests, read invite codes as the superuser before you switch to a user, because a user who isn't a member can't see the apartment row.
+- `event_deadline()` uses placeholder rules for when silence counts as approval. This is still an open decision.
+- PostgREST returns a `tstzrange` as a string like `["2026-11-25 18:00:00+00","…")`. Parse it with `parseRange()`, because Hermes can't parse Postgres timestamps directly.
+- The date and time pickers use `@react-native-community/datetimepicker`. iOS shows the inline compact picker; Android opens the system dialog (`src/components/DateTimeField.tsx`).
+- An overlapping event request fails with error code `23P01`. The calendar screen turns it into a friendly message.
+
+## Branches
+- `main` holds a stable version. Daily work goes into `dev`, and moves to `main` through a pull request.
 
 ## Commands
 - `npm test` runs the domain tests, and `npm run typecheck` checks the types.

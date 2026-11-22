@@ -1,0 +1,88 @@
+{
+  "appName": "Shutaf",
+  "common": {
+    "continue": "Continue",
+    "cancel": "Cancel",
+    "error": "Something went wrong",
+    "comingSoon": "Coming soon"
+  },
+  "auth": {
+    "title": "Welcome to Shutaf",
+    "subtitle": "Run your shared apartment in one place",
+    "phoneLabel": "Phone number",
+    "phonePlaceholder": "+972 50 123 4567",
+    "sendCode": "Send verification code",
+    "google": "Sign in with Google",
+    "codeLabel": "The code you received",
+    "verify": "Verify"
+  },
+  "apartment": {
+    "title": "Your apartment",
+    "createTitle": "Open a new apartment",
+    "namePlaceholder": "e.g. The Rehavia flat",
+    "create": "Open apartment",
+    "joinTitle": "Join an existing apartment",
+    "codePlaceholder": "Invite code (6 characters)",
+    "join": "Join"
+  },
+  "tabs": {
+    "home": "Balance",
+    "shopping": "Shopping",
+    "calendar": "Calendar",
+    "requests": "Requests",
+    "assistant": "Assistant"
+  },
+  "home": {
+    "iOwe": "You owe {{amount}}",
+    "owedToMe": "You are owed {{amount}}",
+    "allSettled": "All settled 🎉",
+    "pairs": "Balance between partners",
+    "bottomLine": "Bottom line",
+    "owes": "{{from}} owes {{to}} {{amount}}",
+    "you": "you"
+  },
+  "landlord": {
+    "title": "My apartments",
+    "empty": "You haven't joined an apartment yet"
+  },
+  "placeholder": {
+    "shopping": "Shared shopping list, AI classification and suggestions",
+    "calendar": "Book events with every partner's approval",
+    "requests": "Requests to the landlord and their status",
+    "assistant": "Chat assistant: questions and actions about the apartment"
+  },
+  "calendar": {
+    "empty": "No upcoming events.\nWant to book something? Tap +",
+    "newEvent": "Request an event",
+    "types": {
+      "guests": "Guests",
+      "party": "Party",
+      "shabbat_big": "Shabbat / big event"
+    },
+    "allDay": "All day",
+    "day": "Date",
+    "from": "From",
+    "to": "Until",
+    "titleLabel": "Details (optional)",
+    "titlePlaceholder": "e.g. Noa's birthday",
+    "hint": "Every partner must approve. Anyone who doesn't answer by the deadline counts as agreeing.",
+    "submit": "Send request",
+    "pending": "Waiting for approval {{approved}}/{{total}}",
+    "approved": "Approved",
+    "autoApprove": "If nobody objects, approved on {{when}}",
+    "requestedBy": "Requested by {{name}}",
+    "approve": "Approve",
+    "reject": "Reject",
+    "answered": "You approved ✓",
+    "cancelEvent": "Cancel event",
+    "cancelConfirm": "Cancel this event? The time slot will be freed.",
+    "rejectTitle": "Why reject?",
+    "rejectPlaceholder": "Reason (required)",
+    "rejectSubmit": "Reject request",
+    "errors": {
+      "overlap": "There's already an event or request at this time",
+      "past": "You can't request an event that has already started",
+      "tooLong": "An event can last up to 3 days"
+    }
+  }
+}

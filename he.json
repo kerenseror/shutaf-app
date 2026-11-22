@@ -1,0 +1,88 @@
+{
+  "appName": "שותף",
+  "common": {
+    "continue": "המשך",
+    "cancel": "ביטול",
+    "error": "משהו השתבש",
+    "comingSoon": "בקרוב"
+  },
+  "auth": {
+    "title": "ברוכים הבאים לשותף",
+    "subtitle": "ניהול משק הבית בדירת השותפים, במקום אחד",
+    "phoneLabel": "מספר טלפון",
+    "phonePlaceholder": "050-1234567",
+    "sendCode": "שליחת קוד אימות",
+    "google": "התחברות עם Google",
+    "codeLabel": "קוד האימות שקיבלת",
+    "verify": "אימות"
+  },
+  "apartment": {
+    "title": "הדירה שלך",
+    "createTitle": "פתיחת דירה חדשה",
+    "namePlaceholder": "למשל: הדירה ברחביה",
+    "create": "פתיחת דירה",
+    "joinTitle": "הצטרפות לדירה קיימת",
+    "codePlaceholder": "קוד הזמנה (6 תווים)",
+    "join": "הצטרפות"
+  },
+  "tabs": {
+    "home": "מאזן",
+    "shopping": "קניות",
+    "calendar": "לוח שנה",
+    "requests": "פניות",
+    "assistant": "עוזר"
+  },
+  "home": {
+    "iOwe": "אתה חייב {{amount}}",
+    "owedToMe": "חייבים לך {{amount}}",
+    "allSettled": "הכל מאוזן 🎉",
+    "pairs": "מאזן בין השותפים",
+    "bottomLine": "השורה התחתונה",
+    "owes": "{{from}} חייב/ת ל{{to}} {{amount}}",
+    "you": "את/ה"
+  },
+  "landlord": {
+    "title": "הדירות שלי",
+    "empty": "עוד לא הצטרפת לאף דירה"
+  },
+  "placeholder": {
+    "shopping": "רשימת קניות משותפת, סיווג AI והצעות לפריטים חסרים",
+    "calendar": "שריון אירועים באישור כל השותפים",
+    "requests": "פניות לבעל הדירה וסטטוס הטיפול",
+    "assistant": "עוזר שיחה: שאלות ופעולות על הדירה"
+  },
+  "calendar": {
+    "empty": "אין אירועים קרובים.\nרוצים לשריין משהו? לחצו על +",
+    "newEvent": "בקשת אירוע",
+    "types": {
+      "guests": "אירוח אורחים",
+      "party": "מסיבה",
+      "shabbat_big": "שבת / אירוע גדול"
+    },
+    "allDay": "כל היום",
+    "day": "תאריך",
+    "from": "משעה",
+    "to": "עד שעה",
+    "titleLabel": "פרטים (לא חובה)",
+    "titlePlaceholder": "למשל: יום הולדת לנועה",
+    "hint": "כל השותפים צריכים לאשר. מי שלא מגיב עד המועד, נחשב כמסכים.",
+    "submit": "שליחת בקשה",
+    "pending": "ממתין לאישור {{approved}}/{{total}}",
+    "approved": "מאושר",
+    "autoApprove": "אם אין תגובה, יאושר ב{{when}}",
+    "requestedBy": "ביקש/ה: {{name}}",
+    "approve": "אישור",
+    "reject": "דחייה",
+    "answered": "אישרת ✓",
+    "cancelEvent": "ביטול האירוע",
+    "cancelConfirm": "לבטל את האירוע? הזמן יתפנה לשותפים אחרים.",
+    "rejectTitle": "למה לדחות?",
+    "rejectPlaceholder": "סיבה (חובה)",
+    "rejectSubmit": "דחיית הבקשה",
+    "errors": {
+      "overlap": "כבר יש אירוע או בקשה בזמן הזה",
+      "past": "אי אפשר לבקש אירוע בזמן שכבר התחיל",
+      "tooLong": "אירוע יכול להימשך עד 3 ימים"
+    }
+  }
+}
